@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .wrapper {
+            display: flex;
+            width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .left {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .left h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .left p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .left button {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .left button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .right {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+        }
+        h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0097a7;
+        }
+        .link {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .link a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Phần bên trái -->
+        <div class="left">
+            <h2>Bắt đầu cuộc hành trình của bạn bây giờ</h2>
+            <p>Hãy tham gia cùng chúng tôi và bắt đầu cuộc hành trình của bạn.</p>
+            <button onclick="window.location.href='Login.html'">Đăng nhập</button>
+        </div>
+        <!-- Phần bên phải -->
+        <div class="right">
+            <h3>Quên Mật Khẩu</h3>
+            <p>Nhập email bạn đã đăng ký để lấy lại mật khẩu.</p>
+            <input type="email" id="forgot-email" placeholder="Email" required>
+            <button onclick="retrievePassword()">Gửi Yêu Cầu</button>
+            <div class="link">
+                <a href="index.html">Quay lại trang đăng nhập</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function retrievePassword() {
+            const email = document.getElementById("forgot-email").value;
+            const registeredEmail = localStorage.getItem('registeredEmail');
+            const registeredPassword = localStorage.getItem('registeredPassword');
+
+            if (email === registeredEmail) {
+                alert(`Mật khẩu của bạn là: ${registeredPassword}`);
+                window.location.href = "index.html"; // Chuyển về trang đăng nhập
+            } else {
+                alert("Email không tồn tại trong hệ thống. Vui lòng kiểm tra lại hoặc đăng ký.");
+            }
+        }
+    </script>
+</body>
+</html>
